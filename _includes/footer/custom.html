@@ -3,4 +3,12 @@
 <!-- Support for MathJax -->
 <script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.js"></script>
 
+<script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+<script>
+  /* Initialize Plyr on all audio elements */
+  document.addEventListener('DOMContentLoaded', () => {
+    const players = Plyr.setup('audio');
+  });
+</script>
+
 <!-- end custom footer snippets -->

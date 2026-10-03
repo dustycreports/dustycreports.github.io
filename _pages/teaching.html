@@ -7,6 +7,14 @@ author_profile: true
 
 {% include base_path %}
 
-{% for post in site.teaching reversed %}
+<h2 class="section-header">Recent classes</h2>
+{% assign recent_courses = site.teaching | where: "category", "recent" %}
+{% for post in recent_courses %}
+  {% include archive-single.html %}
+{% endfor %}
+
+<h2 class="section-header">Past classes</h2>
+{% assign past_courses = site.teaching | where: "category", "past" %}
+{% for post in past_courses %}
   {% include archive-single.html %}
 {% endfor %}
