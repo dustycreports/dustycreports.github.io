@@ -33,7 +33,7 @@ a {
 .greedy-nav a,
 .visible-links a,
 .masthead__menu-item a {
-  color: #1a1a1a !important;   /* Force black on unselected links */
+  color: #1a1a1a !important;
   text-decoration: none !important;
 
   &:hover,
@@ -46,7 +46,7 @@ a {
 .greedy-nav .active a,
 .visible-links .active a,
 .masthead__menu-item--active a {
-  color: #1a1a1a !important;   /* Keeps active tab text dark */
+  color: #1a1a1a !important;
   font-weight: bold;
 }
 
@@ -107,13 +107,8 @@ a:focus {
   .archive,
   .page__content {
     margin-left: 0 !important;
-    margin-top: 0 !important;
+    /* Removed margin-top: 0 to prevent the text from clipping into the masthead */
     flex: 1 !important;
-  }
-
-  .page__footer {
-    position: relative !important;
-    z-index: 20;
   }
 }
 
@@ -122,28 +117,18 @@ a:focus {
   display: none !important;
 }
 
-/* Footer white space */
-html, body {
-  min-height: 100vh !important;
-}
-
-body {
-  display: flex !important;
-  flex-direction: column !important;
-  margin-bottom: 0 !important; 
-}
-
+/* --- MIN-HEIGHT STICKY FOOTER FIX --- */
+/* Safely stretches the main content area to push the footer down without breaking the top nav */
+.initial-content,
 #main {
-  flex: 1 0 auto !important;
-  width: 100% !important;
-  padding-bottom: 0 !important;
-  margin-bottom: 0 !important;
+  min-height: calc(100vh - 250px) !important;
 }
 
-.page__footer {
-  flex-shrink: 0 !important;
-  margin-top: 0.5rem !important; 
-  padding-top: 0.5rem !important;
+.page__footer,
+footer {
+  position: relative !important;
+  bottom: auto !important;
+  margin-bottom: 0 !important;
 }
 
 /* PLYR */
@@ -158,6 +143,7 @@ body {
   border-radius: 4px;
 }
 
+/* TEACHING SECTION HEADERS */
 .section-header {
   color: #990000 !important;
   font-size: 1.05em !important;
