@@ -13,6 +13,18 @@ a {
   }
 }
 
+/* Force footer links to stay red */
+.page__footer a,
+.page__footer-copyright a {
+  color: #990000 !important;
+  text-decoration: underline !important;
+
+  &:hover,
+  &:focus {
+    color: #1a1a1a !important;
+  }
+}
+
 .archive__item-title a {
   color: #1a1a1a;              
   text-decoration: none;
@@ -107,7 +119,6 @@ a:focus {
   .archive,
   .page__content {
     margin-left: 0 !important;
-    /* Removed margin-top: 0 to prevent the text from clipping into the masthead */
     flex: 1 !important;
   }
 }
@@ -117,18 +128,42 @@ a:focus {
   display: none !important;
 }
 
-/* --- MIN-HEIGHT STICKY FOOTER FIX --- */
-/* Safely stretches the main content area to push the footer down without breaking the top nav */
-.initial-content,
-#main {
-  min-height: calc(100vh - 250px) !important;
+/* --- OVERRIDE JQUERY STICKY FOOTER & FORCE FLEXBOX --- */
+html {
+  height: 100% !important;
 }
 
+body {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 100vh !important;
+  margin: 0 !important;
+  margin-bottom: 0 !important; /* Overrides jQuery bumpIt() inline margin-bottom */
+  padding-bottom: 0 !important;
+}
+
+.initial-content,
+#main {
+  flex: 1 0 auto !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* EXPANDED FOOTER CONTAINER */
 .page__footer,
 footer {
   position: relative !important;
   bottom: auto !important;
-  margin-bottom: 0 !important;
+  margin-top: auto !important;   /* Locks footer to the window bottom */
+  margin-bottom: 0 !important;   /* Prevents external white gap under the bar */
+  padding-top: 0.75rem !important;  /* Height inside top of gray bar */
+  padding-bottom: 0.75rem !important;/* Height inside bottom of gray bar */
+}
+
+/* FOOTER TYPOGRAPHY */
+.page__footer-copyright {
+  font-size: 0.85rem !important; /* Slightly clearer text size */
+  line-height: 1.5 !important;
 }
 
 /* PLYR */
