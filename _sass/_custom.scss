@@ -200,3 +200,15 @@ footer {
   margin-top: 2em !important;
   margin-bottom: 1.2em !important;
 }
+
+/* Force-hide navigation toggle button across all screen sizes */
+.greedy-nav__toggle,
+.greedy-nav button,
+.nav__toggle,
+button.greedy-nav__toggle,
+.masthead .greedy-nav__toggle,
+.greedy-nav__toggle.hidden {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
