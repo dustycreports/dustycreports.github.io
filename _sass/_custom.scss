@@ -13,6 +13,18 @@ a {
   }
 }
 
+/* Force footer links to stay red */
+.page__footer a,
+.page__footer-copyright a {
+  color: #990000 !important;
+  text-decoration: underline !important;
+
+  &:hover,
+  &:focus {
+    color: #1a1a1a !important;
+  }
+}
+
 .archive__item-title a {
   color: #1a1a1a;              
   text-decoration: none;
@@ -107,7 +119,7 @@ a:focus {
   .archive,
   .page__content {
     margin-left: 0 !important;
-    /* Removed margin-top: 0 to prevent the text from clipping into the masthead */
+    /* Intentionally leaving margin-top alone so it doesn't slide under the header */
     flex: 1 !important;
   }
 }
@@ -117,18 +129,19 @@ a:focus {
   display: none !important;
 }
 
-/* --- MIN-HEIGHT STICKY FOOTER FIX --- */
-/* Safely stretches the main content area to push the footer down without breaking the top nav */
-.initial-content,
-#main {
-  min-height: calc(100vh - 250px) !important;
+/* --- TRUE FLEXBOX STICKY FOOTER --- */
+body {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 100vh !important;
 }
 
-.page__footer,
-footer {
-  position: relative !important;
-  bottom: auto !important;
-  margin-bottom: 0 !important;
+.initial-content {
+  flex: 1 0 auto !important;
+}
+
+.page__footer {
+  margin-top: auto !important; /* Pushes footer perfectly to the bottom */
 }
 
 /* PLYR */
